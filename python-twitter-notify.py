@@ -1,0 +1,22 @@
+import time
+import twitter
+import notify2
+import json
+import urllib
+
+api = twitter.Api(consumer_key='consumer_key',
+                      consumer_secret='consumer_secret',
+                      access_token_key='access_token',
+                      access_token_secret='access_token_secret')
+a = 0
+notify2.init("twitter@mention")
+while True:
+    mentions = api.GetMentions()
+    print(len(mentions))
+    if a != mentions[0]:
+        b = json.loads(str(mentions[0]))
+        urllib.request.urlretrieve('https://twitter.com/' + b['user']['screen_name'] + '/profile_image?size=bigger', '/home/eatradish/.local/twitter-notify.jpg')
+        twitter_notify = notify2.Notification(b['user']['screen_name'], b['text'], '/home/eatradish/.local/twitter-notify.jpg')
+        twitter_notify.show()
+        a = mentions[0]
+    time.sleep(15)
