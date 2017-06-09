@@ -17,7 +17,6 @@ git clone https://github.com/eatradish/python-twitter-notify.git python-twitter-
 cd python-twitter-notify
 editor python-twitter-notify.py
 // 在 API 部分把自己的 API 输进去
-// 下面有一个 urllib.request.urlretrieve() 的方法，把缓存头像文件的路径改成自己喜欢的
 python(3) python-twitter-notify.py
 // 墙内使用可能需要用 proxychains
 ```

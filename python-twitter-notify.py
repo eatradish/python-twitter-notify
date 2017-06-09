@@ -12,11 +12,10 @@ a = 0
 notify2.init("twitter@mention")
 while True:
     mentions = api.GetMentions()
-    print(len(mentions))
     if a != mentions[0]:
         b = json.loads(str(mentions[0]))
-        urllib.request.urlretrieve('https://twitter.com/' + b['user']['screen_name'] + '/profile_image?size=bigger', '/home/eatradish/.local/twitter-notify.jpg')
-        twitter_notify = notify2.Notification(b['user']['screen_name'], b['text'], '/home/eatradish/.local/twitter-notify.jpg')
+        urllib.request.urlretrieve('https://twitter.com/' + b['user']['screen_name'] + '/profile_image?size=bigger', os.path.abspath('.') + '/twitter-notify.jpg')
+        twitter_notify = notify2.Notification(b['user']['screen_name'], b['text'], os.path.abspath( '.') + '/twitter-notify.jpg'
         twitter_notify.show()
         a = mentions[0]
     time.sleep(15)
