@@ -3,6 +3,7 @@ import twitter
 import notify2
 import json
 import urllib
+import os
 
 api = twitter.Api(consumer_key='consumer_key',
                       consumer_secret='consumer_secret',
